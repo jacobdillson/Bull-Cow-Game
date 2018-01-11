@@ -1,38 +1,48 @@
-#include <iostream>
-#include <string>
-
-using namespace std;
-
-#pragma region prototypes
-void printIntro();
-string getGuess();
-#pragma endregion
-
+#include "main.h"
 
 int main()
 {
-	printIntro();
+	bool play = true;
 
-	string Guess = getGuess();
-	// repeat the guess back to the player
-	cout << "You guessed: " << Guess << endl;
-
+	while (play)
+	{
+		printIntro();
+		playGame();
+		play = askToPlayAgain();
+	}
+		
 	return 0;
+}
+
+void playGame()
+{
+	for (int i = 1; i <= GUESS_LIMIT; i++)
+	{
+		cout << "Guess: ";
+		string Guess = getGuess();
+		cout << "Guess " << i << " was : " << Guess << endl;
+	}
 }
 
 void printIntro()
 {
-	constexpr int WORD_LENGTH = 9;
-
 	cout << "Welcome to the Bull Cow Game!\n";
 	cout << "Can you guess the " << WORD_LENGTH << " letter isogram I'm thinking of?\n";
-	cout << "Guess: ";
 }
 
 string getGuess()
 {
-	// get a guess from the player
 	string Guess = "";
 	getline(cin, Guess);
 	return Guess;
+}
+
+bool askToPlayAgain()
+{
+	string Play = "";
+	cout << "Would you like to play again? (y/n): ";
+	cin >> Play;
+
+	if (Play[0] == 'y') return true;
+	else return false;
 }
