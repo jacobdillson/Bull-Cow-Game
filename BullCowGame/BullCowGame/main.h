@@ -2,13 +2,13 @@
 
 #include <iostream>
 #include <string>
-using namespace std;
+#include "FBullCowGame.h"
 
 #pragma region prototypes
-void playGame();
-void printIntro();
-string getGuess();
-bool askToPlayAgain();
+void PlayGame();
+void PrintIntro();
+std::string GetGuess();
+bool AskToPlayAgain();
 #pragma endregion
 
 #pragma region definition
